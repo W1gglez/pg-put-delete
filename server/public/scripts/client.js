@@ -57,8 +57,10 @@ function renderBooks(books) {
       <tr>
         <td>${book.title}</td>
         <td>${book.author}</td>
-        <td>
-          <button onclick="deleteBook(event)" data-id="${book.id}">Delete</button>
+        <td>${book.isRead}</td>
+        <td data-id="${book.id}">
+          <button onclick="updateRead(event)">Mark as Read</button>
+          <button onclick="deleteBook(event)" >Delete</button>
         </td>
       </tr>
     `;
@@ -66,9 +68,19 @@ function renderBooks(books) {
 }
 
 function deleteBook(event) {
-  console.log('Deleting book by id', event.target.dataset.id);
+  console.log('Deleting book by id', event.target.closest('td').dataset.id);
   axios
-    .delete(`/books/${event.target.dataset.id}`)
+    .delete(`/books/delete/${event.target.closest('td').dataset.id}`)
+    .then((response) => refreshBooks())
+    .catch((error) => {
+      console.log('error in DELETE', error);
+    });
+}
+
+function updateRead(event) {
+  console.log('Update read by id', event.target.closest('td').dataset.id);
+  axios
+    .put(`/books/update/${event.target.closest('td').dataset.id}`)
     .then((response) => refreshBooks())
     .catch((error) => {
       console.log('error in DELETE', error);
