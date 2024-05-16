@@ -26,11 +26,11 @@ Add another button to each book allowing the user to `Mark as Read`. This button
 
 ### Task list
 
-- [ ] Button that makes an HTTP DELETE request
-- [ ] Server-side DELETE route 
-- [ ] Button that makes an HTTP PUT request
-- [ ] Server-side PUT route 
-- [ ] Page should refresh with up-to-date data after a DELETE or PUT
+- [x] Button that makes an HTTP DELETE request
+- [x] Server-side DELETE route 
+- [X] Button that makes an HTTP PUT request
+- [x] Server-side PUT route 
+- [x] Page should refresh with up-to-date data after a DELETE or PUT
 
 
 ## Stretch Goals
